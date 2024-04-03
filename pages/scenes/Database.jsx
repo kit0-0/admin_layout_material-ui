@@ -29,8 +29,13 @@ const columns = [
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+     valueGetter: (params) => {
+        if (params && params.row && params.row.firstName && params.row.lastName) {
+          return `${params.row.firstName} ${params.row.lastName}`;
+        } else {
+          return '';
+        }
+      }
   },
 ];
 
